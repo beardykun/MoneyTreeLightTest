@@ -5,10 +5,9 @@
     android:id="@+id/mobile_navigation"
     app:startDestination="@+id/accountsFragment">
 
-
-   <!-- <fragment
+    <fragment
         android:id="@+id/accountsFragment"
-        android:name="com.example.moneytreelight.accounts.AccountsFragment"
+        android:name="com.example.moneytreelighttest.accounts.AccountsFragment"
         android:label="fragment_accounts"
-        tools:layout="@layout/fragment_accounts" />-->
+        tools:layout="@layout/fragment_accounts" />
 </navigation>
