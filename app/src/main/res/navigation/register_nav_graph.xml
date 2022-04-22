@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/register_nav_graph"
+    app:startDestination="@id/registNameFragment">
+
+    <fragment
+        android:id="@+id/registNameFragment"
+        android:name="com.tripmate.tripmate.ui.register.RegistNameFragment"
+        android:label="fragment_regist_name"
+        tools:layout="@layout/fragment_regist_name" >
+        <action
+            android:id="@+id/action_registNameFragment_to_registerBirthdayFragment"
+            app:destination="@id/registerBirthdayFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/registerBirthdayFragment"
+        android:name="com.tripmate.tripmate.ui.register.RegisterBirthdayFragment"
+        android:label="fragment_regist_birthday"
+        tools:layout="@layout/fragment_regist_birthday" >
+        <action
+            android:id="@+id/action_registerBirthdayFragment_to_registNameFragment"
+            app:destination="@id/registNameFragment" />
+        <action
+            android:id="@+id/action_registerBirthdayFragment_to_registGenderFragment"
+            app:destination="@id/registGenderFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/registGenderFragment"
+        android:name="com.tripmate.tripmate.ui.register.RegistGenderFragment"
+        android:label="fragment_regist_gender"
+        tools:layout="@layout/fragment_regist_gender" >
+        <action
+            android:id="@+id/action_registGenderFragment_to_registerBirthdayFragment"
+            app:destination="@id/registerBirthdayFragment" />
+        <action
+            android:id="@+id/action_registGenderFragment_to_registCountryFragment"
+            app:destination="@id/registCountryFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/registCountryFragment"
+        android:name="com.tripmate.tripmate.ui.register.RegistCountryFragment"
+        android:label="activity_regist_country"
+        tools:layout="@layout/fragment_regist_country" >
+        <action
+            android:id="@+id/action_registCountryFragment_to_registGenderFragment"
+            app:destination="@id/registGenderFragment" />
+        <action
+            android:id="@+id/action_registCountryFragment_to_registLanguageFragment"
+            app:destination="@id/registLanguageFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/registLanguageFragment"
+        android:name="com.tripmate.tripmate.ui.register.RegistLanguageFragment"
+        android:label="fragment_regist_language"
+        tools:layout="@layout/fragment_regist_language" >
+        <action
+            android:id="@+id/action_registLanguageFragment_to_registCountryFragment"
+            app:destination="@id/registCountryFragment" />
+        <action
+            android:id="@+id/action_registLanguageFragment_to_registPhotoFragment"
+            app:destination="@id/registPhotoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/registPhotoFragment"
+        android:name="com.tripmate.tripmate.ui.register.RegistPhotoFragment"
+        android:label="fragment_regist_photo"
+        tools:layout="@layout/fragment_regist_photo" >
+        <action
+            android:id="@+id/action_registPhotoFragment_to_registLanguageFragment"
+            app:destination="@id/registLanguageFragment" />
+        <action
+            android:id="@+id/action_registPhotoFragment_to_registInterestFragment"
+            app:destination="@id/registInterestFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/registInterestFragment"
+        android:name="com.tripmate.tripmate.ui.register.RegisterInterestFragment"
+        android:label="fragment_regist_interest"
+        tools:layout="@layout/fragment_regist_asks" >
+
+        <action
+            android:id="@+id/action_registInterestFragment_to_registPhotoFragment"
+            app:destination="@id/registPhotoFragment" />
+        <action
+            android:id="@+id/action_registInterestFragment_to_registerWantVisitCountryFragment"
+            app:destination="@id/registerWantVisitCountryFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/registerWantVisitCountryFragment"
+        android:name="com.tripmate.tripmate.ui.register.RegisterWantVisitCountryFragment"
+        android:label="fragment_register_visit_country"
+        tools:layout="@layout/fragment_register_visit_country" >
+        <action
+            android:id="@+id/action_registerWantVisitCountryFragment_to_registInterestFragment"
+            app:destination="@id/registInterestFragment" />
+        <action
+            android:id="@+id/action_registerWantVisitCountryFragment_to_registIntroductionFragment"
+            app:destination="@id/registIntroductionFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/registIntroductionFragment"
+        android:name="com.tripmate.tripmate.ui.register.RegistIntroductionFragment"
+        android:label="fragment_regist_introduction"
+        tools:layout="@layout/fragment_regist_introduction" >
+        <action
+            android:id="@+id/action_registIntroductionFragment_to_registerWantVisitCountryFragment"
+            app:destination="@id/registerWantVisitCountryFragment" />
+    </fragment>
+</navigation>
