@@ -3,16 +3,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:layout_marginVertical="8dp"
     android:layout_marginStart="16dp">
 
     <TextView
-        android:id="@+id/tvCardName"
+        android:id="@+id/tvInstitutionName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
+        android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -24,6 +26,30 @@
         android:layout_height="1dp"
         android:layout_marginTop="8dp"
         android:background="@color/white"
-        app:layout_constraintTop_toBottomOf="@+id/tvCardName" />
+        app:layout_constraintTop_toBottomOf="@+id/tvInstitutionName" />
+
+    <TextView
+        android:id="@+id/tvCardName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="24dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/tvCardBalance"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/vCardNameSeparator"
+        tools:text="マイカード" />
+
+    <TextView
+        android:id="@+id/tvCardBalance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/vCardNameSeparator"
+        tools:text="JPY2,780" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
