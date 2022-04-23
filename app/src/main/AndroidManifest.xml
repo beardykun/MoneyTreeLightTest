@@ -3,6 +3,7 @@
     package="com.example.moneytreelighttest">
 
     <application
+        android:name=".MTLApplication"
         android:allowBackup="true"
         android:hardwareAccelerated="true"
         android:icon="@mipmap/ic_launcher"

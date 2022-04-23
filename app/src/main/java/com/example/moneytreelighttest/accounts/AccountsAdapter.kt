@@ -11,6 +11,16 @@ import com.example.moneytreelighttest.model.Account
 class AccountsAdapter(private val accounts: ArrayList<Account>) :
     RecyclerView.Adapter<AccountsAdapter.AccountsViewHolder>() {
 
+    interface OnAccountClickListener {
+        fun onAccountClick(account: Account)
+    }
+
+    private var mListener: OnAccountClickListener? = null
+
+    fun setListener(listener: OnAccountClickListener) {
+        mListener = listener
+    }
+
     class AccountsViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val tvInstitutionName: TextView = view.findViewById(R.id.tvInstitutionName)
         val tvCardName: TextView = view.findViewById(R.id.tvCardName)
@@ -31,6 +41,10 @@ class AccountsAdapter(private val accounts: ArrayList<Account>) :
                 if (currency == "JPY") "%,d".format(currentBalance.toInt()) else currentBalance
             val balance = "$currency$curBalance"
             holder.tvCardBalance.text = balance
+
+            holder.itemView.setOnClickListener {
+                mListener?.onAccountClick(this)
+            }
         }
     }
 

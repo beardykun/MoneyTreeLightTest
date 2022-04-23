@@ -5,10 +5,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.example.moneytreelighttest.BaseFragment
 import com.example.moneytreelighttest.databinding.FragmentAccountsBinding
+import com.example.moneytreelighttest.model.Account
+import dagger.hilt.android.AndroidEntryPoint
 
-class AccountsFragment : BaseFragment() {
+@AndroidEntryPoint
+class AccountsFragment : BaseFragment(), AccountsAdapter.OnAccountClickListener {
 
     private lateinit var binding: FragmentAccountsBinding
     private val viewModel: AccountsViewModel by viewModels()
@@ -32,7 +36,11 @@ class AccountsFragment : BaseFragment() {
         //start observing mAccounts list for any data updates
         viewModel.mAccounts.observe(viewLifecycleOwner) { accounts ->
             //setting an adapter to recycler view upon receiving data update
-            accounts?.let { binding.rvAccounts.adapter = AccountsAdapter(it) }
+            accounts?.let {
+                val adapter = AccountsAdapter(it)
+                adapter.setListener(this)
+                binding.rvAccounts.adapter = adapter
+            }
             //hiding progress bar if was displaying it earlier
             //hideProgressView()
         }
@@ -41,5 +49,9 @@ class AccountsFragment : BaseFragment() {
             val totalBalanceText = "JPY${it.toInt()}"
             binding.tvTotalBalance.text = totalBalanceText
         }
+    }
+
+    override fun onAccountClick(account: Account) {
+        findNavController().navigate(AccountsFragmentDirections.actionAccountsFragmentToTransactionsFragment(account))
     }
 }

@@ -9,5 +9,18 @@
         android:id="@+id/accountsFragment"
         android:name="com.example.moneytreelighttest.accounts.AccountsFragment"
         android:label="fragment_accounts"
-        tools:layout="@layout/fragment_accounts" />
+        tools:layout="@layout/fragment_accounts">
+        <action
+            android:id="@+id/action_accountsFragment_to_transactionsFragment"
+            app:destination="@id/transactionsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/transactionsFragment"
+        android:name="com.example.moneytreelighttest.transactions.TransactionsFragment"
+        android:label="TransactionsFragment">
+        <argument
+            android:name="account"
+            app:argType="com.example.moneytreelighttest.model.Account"
+            app:nullable="false" />
+    </fragment>
 </navigation>
