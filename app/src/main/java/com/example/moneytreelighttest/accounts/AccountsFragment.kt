@@ -32,7 +32,7 @@ class AccountsFragment : BaseFragment() {
         //start observing mAccounts list for any data updates
         viewModel.mAccounts.observe(viewLifecycleOwner) { accounts ->
             //setting an adapter to recycler view upon receiving data update
-            accounts?.let { binding.rvAccounts.adapter = AccountsRecyclerView(it) }
+            accounts?.let { binding.rvAccounts.adapter = AccountsAdapter(it) }
             //hiding progress bar if was displaying it earlier
             //hideProgressView()
         }

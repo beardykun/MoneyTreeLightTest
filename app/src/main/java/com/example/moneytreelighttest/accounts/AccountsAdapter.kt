@@ -8,8 +8,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.moneytreelighttest.R
 import com.example.moneytreelighttest.model.Account
 
-class AccountsRecyclerView(private val accounts: ArrayList<Account>) :
-    RecyclerView.Adapter<AccountsRecyclerView.AccountsViewHolder>() {
+class AccountsAdapter(private val accounts: ArrayList<Account>) :
+    RecyclerView.Adapter<AccountsAdapter.AccountsViewHolder>() {
 
     class AccountsViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val tvInstitutionName: TextView = view.findViewById(R.id.tvInstitutionName)
@@ -27,7 +27,9 @@ class AccountsRecyclerView(private val accounts: ArrayList<Account>) :
         accounts[position].apply {
             holder.tvInstitutionName.text = institution
             holder.tvCardName.text = name
-            val balance = "$currency$currentBalance"
+            val curBalance =
+                if (currency == "JPY") "%,d".format(currentBalance.toInt()) else currentBalance
+            val balance = "$currency$curBalance"
             holder.tvCardBalance.text = balance
         }
     }

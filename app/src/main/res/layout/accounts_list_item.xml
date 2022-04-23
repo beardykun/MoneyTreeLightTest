@@ -25,20 +25,19 @@
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_marginTop="8dp"
-        android:background="@color/white"
+        android:background="@color/teal_200"
         app:layout_constraintTop_toBottomOf="@+id/tvInstitutionName" />
 
     <TextView
         android:id="@+id/tvCardName"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_height="0dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="24dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:gravity="center_vertical"
+        app:layout_constraintBottom_toBottomOf="@+id/tvCardBalance"
         app:layout_constraintEnd_toStartOf="@+id/tvCardBalance"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/vCardNameSeparator"
+        app:layout_constraintTop_toTopOf="@+id/tvCardBalance"
         tools:text="マイカード" />
 
     <TextView
@@ -47,6 +46,10 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
+        android:layout_marginBottom="24dp"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/vCardNameSeparator"
         tools:text="JPY2,780" />
