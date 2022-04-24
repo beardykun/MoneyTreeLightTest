@@ -43,6 +43,10 @@ class AccountsFragment : BaseFragment(), AccountsAdapter.OnAccountClickListener 
             }
             //hiding progress bar if was displaying it earlier
             //hideProgressView()
+
+            viewModel.listPosition?.let {
+                binding.rvAccounts.layoutManager?.onRestoreInstanceState(it)
+            }
         }
 
         // observe mTotalBalance for any updates
@@ -55,6 +59,15 @@ class AccountsFragment : BaseFragment(), AccountsAdapter.OnAccountClickListener 
     override fun onAccountClick(account: Account) {
         // navigating to Transactions screen
         showProgressView()
-        findNavController().navigate(AccountsFragmentDirections.actionAccountsFragmentToTransactionsFragment(account))
+        findNavController().navigate(
+            AccountsFragmentDirections.actionAccountsFragmentToTransactionsFragment(
+                account
+            )
+        )
+    }
+
+    override fun onStop() {
+        viewModel.listPosition = binding.rvAccounts.layoutManager?.onSaveInstanceState()
+        super.onStop()
     }
 }

@@ -1,6 +1,7 @@
 package com.example.moneytreelighttest.accounts
 
 import android.app.Application
+import android.os.Parcelable
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
@@ -21,6 +22,13 @@ class AccountsViewModel @Inject constructor(application: Application) :
 
     val mAccounts = MutableLiveData<ArrayList<Account>?>()
     val mTotalBalance = MutableLiveData<Double>()
+
+    private var mListPosition: Parcelable? = null
+    var listPosition: Parcelable?
+        get() = mListPosition
+        set(value) {
+            mListPosition = value
+        }
 
     fun getAccounts() {
         viewModelScope.launch {

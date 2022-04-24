@@ -7,18 +7,21 @@ import java.io.InputStream
 class Utils {
 
     companion object {
+        // returning text format JPY2,333
         fun getFormattedSum(account: Account): String {
             val curBalance =
                 if (account.currency == "JPY") "%,d".format(account.currentBalance.toInt()) else account.currentBalance
             return "${account.currency}$curBalance"
         }
 
+        // returning text format 2,333JPY
         fun getFormattedSumForTransaction(account: Account, sum: Double): String {
             val curBalance =
                 if (account.currency == "JPY") "%,d".format(sum.toInt()) else sum
             return "$curBalance${account.currency}"
         }
 
+        // getting json file content as a String
         fun loadJSONFromAsset(jsonName: String): String? {
             return try {
                 val `is`: InputStream =
@@ -29,6 +32,7 @@ class Utils {
                 `is`.close()
                 String(buffer)
             } catch (ex: IOException) {
+                //TODO handle error proper way
                 ex.printStackTrace()
                 return null
             }
