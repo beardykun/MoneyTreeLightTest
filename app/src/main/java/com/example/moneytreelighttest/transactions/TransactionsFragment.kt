@@ -50,6 +50,7 @@ class TransactionsFragment : BaseFragment() {
         savedInstanceState: Bundle?
     ): View? {
         return contentView {
+            // TODO make a common composable and reuse it for similar type items (Text etc.)
             MoneyTreeLightTestTheme {
                 hideProgressView()
                 TransactionsScreen(args.account, viewModel, Modifier)
@@ -59,6 +60,7 @@ class TransactionsFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        // requesting transactions from json
         viewModel.getTransactionsForAccount(args.account)
     }
 
@@ -78,6 +80,7 @@ class TransactionsFragment : BaseFragment() {
         }
     }
 
+    // setting TopBar
     @Composable
     fun TopBar() {
         TopAppBar(
@@ -96,6 +99,7 @@ class TransactionsFragment : BaseFragment() {
         )
     }
 
+    // displaying institution and account currentBalance
     @Composable
     fun AccountInfo(account: Account, modifier: Modifier) {
         Column(
@@ -117,18 +121,22 @@ class TransactionsFragment : BaseFragment() {
         }
     }
 
+    // Compose analog or recycler View. we don't need to create Adapter, compose will do it for us
     @Composable
     fun TransactionsList(account: Account, viewModel: TransactionsViewModel, modifier: Modifier) {
-        // Remember our own LazyListState
+        // Remember our own LazyListState to control and observe scrolling
         val listState = rememberLazyListState()
+        // Starting to observe list for any changes and recreate it if have any
         val listTransitions = remember { viewModel.mTransactions }
         LazyColumn(state = listState) {
+            // populating list with the items
             items(listTransitions) {
                 TransactionsListItem(account, it, viewModel, modifier)
             }
         }
     }
 
+    //list item displaying date, description and amount of transaction
     @Composable
     fun TransactionsListItem(
         account: Account,
@@ -174,6 +182,7 @@ class TransactionsFragment : BaseFragment() {
         }
     }
 
+    // header displaying the month, the year and balance of this month
     @Composable
     fun MonthInfoHeader(
         account: Account,
@@ -193,7 +202,7 @@ class TransactionsFragment : BaseFragment() {
                 modifier = modifier.padding(end = 16.dp),
                 style = MaterialTheme.typography.h5
             )
-
+            //checking if the month balance is positive or not and setting corresponding Icon and content description
             val isPositive = balanceChange.value > 0
             val icon =
                 if (isPositive) Icons.Default.TrendingUp else Icons.Default.TrendingDown

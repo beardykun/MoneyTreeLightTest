@@ -46,16 +46,15 @@ class TransactionsViewModel @Inject constructor() : ViewModel() {
                         }
                     } catch (e: Exception) {
                         e.printStackTrace()
-                        withContext(Dispatchers.Main) {
-                            mTransactions.addAll(arrayListOf())
-                        }
+                        //TODO would be nice to inform user about the problem and optionally retry
+                        //TODO track Exception properly
                     }
                 }
             }
         }
     }
 
-    //creating
+    //creating Transactions object from JSONObject
     private fun getTransactionsInfo(jsonObject: JSONObject): Transaction {
         jsonObject.apply {
             val accountId = getInt(Transaction.ACCOUNT_ID)
@@ -78,7 +77,7 @@ class TransactionsViewModel @Inject constructor() : ViewModel() {
         return sdf.format(monthToDisplay ?: Date()) == sdf.format(date)
     }
 
-    fun isSameMonthForAsync(date: Date, date2: Date): Boolean {
+    private fun isSameMonthForAsync(date: Date, date2: Date): Boolean {
         val sdf = SimpleDateFormat("yyMM", Locale.getDefault())
         return sdf.format(date) == sdf.format(date2)
     }

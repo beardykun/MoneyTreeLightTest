@@ -44,7 +44,8 @@ class AccountsViewModel @Inject constructor(application: Application) :
                         }
                     } catch (e: Exception) {
                         e.printStackTrace()
-                        mAccounts.postValue(null)
+                        //TODO would be nice to inform user about the problem and optionally retry
+                        //TODO track Exception properly
                     }
                 }
             }

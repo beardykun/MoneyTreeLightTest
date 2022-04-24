@@ -45,6 +45,7 @@ class AccountsFragment : BaseFragment(), AccountsAdapter.OnAccountClickListener 
             //hideProgressView()
         }
 
+        // observe mTotalBalance for any updates
         viewModel.mTotalBalance.observe(viewLifecycleOwner) {
             val totalBalanceText = "JPY${it.toInt()}"
             binding.tvTotalBalance.text = totalBalanceText
@@ -52,6 +53,7 @@ class AccountsFragment : BaseFragment(), AccountsAdapter.OnAccountClickListener 
     }
 
     override fun onAccountClick(account: Account) {
+        // navigating to Transactions screen
         showProgressView()
         findNavController().navigate(AccountsFragmentDirections.actionAccountsFragmentToTransactionsFragment(account))
     }
