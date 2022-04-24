@@ -43,13 +43,7 @@ class TransactionsViewModel @Inject constructor() : ViewModel() {
                         transactions.sortByDescending { transaction -> transaction.date }
                         //check if a new transaction has the same month with the previous one,
                         // if not set hasHeader = true
-                        var monthToDisplay = Date()
-                        transactions.forEach { transaction ->
-                            if (isSameMonthForAsync(transaction.date, monthToDisplay).not()) {
-                                monthToDisplay = transaction.date
-                                transaction.hasHeader = true
-                            }
-                        }
+                        setHeadersToFirstItems(transactions)
                         withContext(Dispatchers.Main) {
                             //setting this value triggers UI update, should be performed on Main thread
                             mTransactions.addAll(transactions)
@@ -60,6 +54,16 @@ class TransactionsViewModel @Inject constructor() : ViewModel() {
                         //TODO track Exception properly
                     }
                 }
+            }
+        }
+    }
+
+    private fun setHeadersToFirstItems(transactions: ArrayList<Transaction>) {
+        var monthToDisplay = Date()
+        transactions.forEach { transaction ->
+            if (isSameMonthForAsync(transaction.date, monthToDisplay).not()) {
+                monthToDisplay = transaction.date
+                transaction.hasHeader = true
             }
         }
     }
