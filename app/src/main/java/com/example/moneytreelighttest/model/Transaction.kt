@@ -11,6 +11,9 @@ data class Transaction(
     val description: String,
     val id: Int
 ) {
+
+    var hasHeader = false
+
     companion object {
         const val ACCOUNT_ID = "account_id"
         const val AMOUNT = "amount"

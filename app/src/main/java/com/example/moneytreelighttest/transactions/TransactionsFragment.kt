@@ -145,10 +145,8 @@ class TransactionsFragment : BaseFragment() {
         modifier: Modifier
     ) {
         Column {
-            //check if a new transaction has the same month with the previous one
-            //add header item if the above condition is false
-            if (viewModel.monthToDisplay == null || viewModel.isSameMonth(transaction.date).not()) {
-                viewModel.monthToDisplay = transaction.date
+            //add header item if needed
+            if (transaction.hasHeader) {
                 MonthInfoHeader(account, transaction, viewModel, modifier)
             }
             Row(

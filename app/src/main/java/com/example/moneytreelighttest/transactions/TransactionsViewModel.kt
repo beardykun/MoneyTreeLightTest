@@ -22,8 +22,8 @@ private const val TRANSACTIONS = "transactions"
 @HiltViewModel
 class TransactionsViewModel @Inject constructor() : ViewModel() {
 
-    var mTransactions = mutableStateListOf<Transaction>()
-    var monthToDisplay: Date? = null
+    // containing Transactions data received from transactions_*.json
+    val mTransactions = mutableStateListOf<Transaction>()
 
     //asynchronous retrieving of Transactions information corresponding currently selected account
     fun getTransactionsForAccount(account: Account) {
@@ -36,10 +36,20 @@ class TransactionsViewModel @Inject constructor() : ViewModel() {
                         val jsonArray = transactionsJson.getJSONArray(TRANSACTIONS)
                         for (i in 0 until jsonArray.length()) {
                             val jsonObject: JSONObject = jsonArray.getJSONObject(i)
-                            transactions.add(getTransactionsInfo(jsonObject))
+                            val transaction = getTransactionsInfo(jsonObject)
+                            transactions.add(transaction)
                         }
                         //performing sorting by date, from the newest to the oldest
                         transactions.sortByDescending { transaction -> transaction.date }
+                        //check if a new transaction has the same month with the previous one,
+                        // if not set hasHeader = true
+                        var monthToDisplay = Date()
+                        transactions.forEach { transaction ->
+                            if (isSameMonthForAsync(transaction.date, monthToDisplay).not()) {
+                                monthToDisplay = transaction.date
+                                transaction.hasHeader = true
+                            }
+                        }
                         withContext(Dispatchers.Main) {
                             //setting this value triggers UI update, should be performed on Main thread
                             mTransactions.addAll(transactions)
@@ -72,11 +82,6 @@ class TransactionsViewModel @Inject constructor() : ViewModel() {
     }
 
     //checking if date is in the same month and year with the currently loading month(monthToDisplay)
-    fun isSameMonth(date: Date): Boolean {
-        val sdf = SimpleDateFormat("yyMM", Locale.getDefault())
-        return sdf.format(monthToDisplay ?: Date()) == sdf.format(date)
-    }
-
     private fun isSameMonthForAsync(date: Date, date2: Date): Boolean {
         val sdf = SimpleDateFormat("yyMM", Locale.getDefault())
         return sdf.format(date) == sdf.format(date2)
