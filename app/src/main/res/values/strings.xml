@@ -1,7 +1,6 @@
 <resources>
     <string name="app_name">MoneyTreeLightTest</string>
     <string name="transaction_screen">Transaction Screen</string>
-    <string name="balance_change">バランスの変化:</string>
     <string name="back">Back</string>
     <string name="positive_balance">positive balance</string>
     <string name="negative_balance">negative balance</string>
