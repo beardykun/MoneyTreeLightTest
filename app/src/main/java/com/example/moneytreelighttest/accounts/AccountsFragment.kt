@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.moneytreelighttest.BaseFragment
+import com.example.moneytreelighttest.Utils
 import com.example.moneytreelighttest.databinding.FragmentAccountsBinding
 import com.example.moneytreelighttest.model.Account
 import dagger.hilt.android.AndroidEntryPoint
@@ -51,7 +52,7 @@ class AccountsFragment : BaseFragment(), AccountsAdapter.OnAccountClickListener 
 
         // observe mTotalBalance for any updates
         viewModel.mTotalBalance.observe(viewLifecycleOwner) {
-            val totalBalanceText = "JPY${it.toInt()}"
+            val totalBalanceText = Utils.getFormattedSum(it)
             binding.tvTotalBalance.text = totalBalanceText
         }
     }

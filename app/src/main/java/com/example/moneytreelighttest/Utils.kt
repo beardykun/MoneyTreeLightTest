@@ -14,6 +14,11 @@ class Utils {
             return "${account.currency}$curBalance"
         }
 
+        fun getFormattedSum(currentBalance: Double): String {
+            val curBalance = "%,d".format(currentBalance.toInt())
+            return "JPY$curBalance"
+        }
+
         // returning text format 2,333JPY
         fun getFormattedSumForTransaction(account: Account, sum: Double): String {
             val curBalance =
