@@ -52,6 +52,7 @@ class AccountsFragment : BaseFragment(), AccountsAdapter.OnAccountClickListener 
     }
 
     override fun onAccountClick(account: Account) {
+        showProgressView()
         findNavController().navigate(AccountsFragmentDirections.actionAccountsFragmentToTransactionsFragment(account))
     }
 }

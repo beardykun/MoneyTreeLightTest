@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.moneytreelighttest.R
+import com.example.moneytreelighttest.Utils
 import com.example.moneytreelighttest.model.Account
 
 class AccountsAdapter(private val accounts: ArrayList<Account>) :
@@ -37,10 +38,7 @@ class AccountsAdapter(private val accounts: ArrayList<Account>) :
         accounts[position].apply {
             holder.tvInstitutionName.text = institution
             holder.tvCardName.text = name
-            val curBalance =
-                if (currency == "JPY") "%,d".format(currentBalance.toInt()) else currentBalance
-            val balance = "$currency$curBalance"
-            holder.tvCardBalance.text = balance
+            holder.tvCardBalance.text = Utils.getFormattedSum(this)
 
             holder.itemView.setOnClickListener {
                 mListener?.onAccountClick(this)
