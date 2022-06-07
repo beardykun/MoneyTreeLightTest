@@ -1,4 +1,4 @@
-# MoneyTreeLightTest
+# TestApp
 
 ## Description
 Budget management application.
@@ -11,7 +11,7 @@ It consists of two screens.<br/>
 
 To better demonstrate the difference between orthodox `XML` and new `jetpack compose` approaches,
 `Account Screen` was implemented using `XML` and `Transaction Screen` using `jetpack compose`<br/>
-That decision was made to show how easy `XML` and `jetpack compose` can coexist together, and in hope, it can make Anthony's life a bit more simple regardless of the outcome of this test and interview :)<br/>
+That decision was made to show how easy `XML` and `jetpack compose` can coexist together<br/>
 
 Application is built using `MVVM` pattern that helps to better encapsulate business logic and UI creation<br/>
 
