@@ -1,4 +1,4 @@
-package com.example.moneytreelighttest.accounts
+package com.example.moneytreelighttest.presentation.accounts
 
 import android.view.LayoutInflater
 import android.view.View
@@ -7,9 +7,9 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.moneytreelighttest.R
 import com.example.moneytreelighttest.Utils
-import com.example.moneytreelighttest.model.Account
+import com.example.moneytreelighttest.domain.Account
 
-class AccountsAdapter(private val accounts: ArrayList<Account>) :
+class AccountsAdapter(private val accounts: List<Account>) :
     RecyclerView.Adapter<AccountsAdapter.AccountsViewHolder>() {
 
     interface OnAccountClickListener {

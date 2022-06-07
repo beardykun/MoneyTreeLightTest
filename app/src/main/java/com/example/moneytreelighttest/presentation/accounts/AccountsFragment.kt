@@ -1,4 +1,4 @@
-package com.example.moneytreelighttest.accounts
+package com.example.moneytreelighttest.presentation.accounts
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,7 +9,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.moneytreelighttest.BaseFragment
 import com.example.moneytreelighttest.Utils
 import com.example.moneytreelighttest.databinding.FragmentAccountsBinding
-import com.example.moneytreelighttest.model.Account
+import com.example.moneytreelighttest.domain.Account
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -32,8 +32,6 @@ class AccountsFragment : BaseFragment(), AccountsAdapter.OnAccountClickListener 
         //we can display a progress bap while waiting for the loading of accounts information
         //showProgressView()
 
-        //request data from Json
-        viewModel.getAccounts()
         //start observing mAccounts list for any data updates
         viewModel.mAccounts.observe(viewLifecycleOwner) { accounts ->
             //setting an adapter to recycler view upon receiving data update
@@ -50,10 +48,9 @@ class AccountsFragment : BaseFragment(), AccountsAdapter.OnAccountClickListener 
             }
         }
 
-        // observe mTotalBalance for any updates
+        // observe mTotalBalance for any updatesx
         viewModel.mTotalBalance.observe(viewLifecycleOwner) {
-            val totalBalanceText = Utils.getFormattedSum(it)
-            binding.tvTotalBalance.text = totalBalanceText
+            binding.tvTotalBalance.text = it
         }
     }
 

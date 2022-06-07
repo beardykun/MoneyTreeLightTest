@@ -1,4 +1,4 @@
-package com.example.moneytreelighttest.model
+package com.example.moneytreelighttest.domain
 
 import android.os.Parcel
 import android.os.Parcelable

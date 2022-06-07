@@ -1,4 +1,4 @@
-package com.example.moneytreelighttest.transactions
+package com.example.moneytreelighttest.presentation.transactions
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -32,7 +32,7 @@ import androidx.navigation.fragment.navArgs
 import com.example.moneytreelighttest.BaseFragment
 import com.example.moneytreelighttest.R
 import com.example.moneytreelighttest.Utils
-import com.example.moneytreelighttest.model.Account
+import com.example.moneytreelighttest.domain.Account
 import com.example.moneytreelighttest.model.Transaction
 import com.example.moneytreelighttest.ui.theme.MoneyTreeLightTestTheme
 import dagger.hilt.android.AndroidEntryPoint

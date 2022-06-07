@@ -1,6 +1,6 @@
 package com.example.moneytreelighttest
 
-import com.example.moneytreelighttest.model.Account
+import com.example.moneytreelighttest.domain.Account
 import java.io.IOException
 import java.io.InputStream
 

@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/accountsFragment"
-        android:name="com.example.moneytreelighttest.accounts.AccountsFragment"
+        android:name="com.example.moneytreelighttest.presentation.accounts.AccountsFragment"
         android:label="fragment_accounts"
         tools:layout="@layout/fragment_accounts">
         <action
@@ -16,11 +16,11 @@
     </fragment>
     <fragment
         android:id="@+id/transactionsFragment"
-        android:name="com.example.moneytreelighttest.transactions.TransactionsFragment"
+        android:name="com.example.moneytreelighttest.presentation.transactions.TransactionsFragment"
         android:label="TransactionsFragment">
         <argument
             android:name="account"
-            app:argType="com.example.moneytreelighttest.model.Account"
+            app:argType="com.example.moneytreelighttest.domain.Account"
             app:nullable="false" />
     </fragment>
 </navigation>

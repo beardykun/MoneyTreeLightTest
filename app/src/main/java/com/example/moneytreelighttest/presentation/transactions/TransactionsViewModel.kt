@@ -1,11 +1,11 @@
-package com.example.moneytreelighttest.transactions
+package com.example.moneytreelighttest.presentation.transactions
 
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateListOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.moneytreelighttest.Utils
-import com.example.moneytreelighttest.model.Account
+import com.example.moneytreelighttest.domain.Account
 import com.example.moneytreelighttest.model.Transaction
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
